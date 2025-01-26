@@ -19,7 +19,7 @@ EXE_SRCS := $(shell find $(EXE_DIR) -name *.c)
 EXE_OBJS := $(EXE_SRCS:%=$(BUILD_DIR)/%.o)
 EXE_DEPS := $(EXE_OBJS:.o=.d)
 
-CFLAGS ?= -Wall -Wextra -fno-omit-frame-pointer -fsanitize=address -g -MMD -MP -I$(HARNESS_DIR)
+CFLAGS ?= -Wall -Wextra -fno-omit-frame-pointer -fsanitize=address -g -MMD -MP -I$(HARNESS_DIR) -I$(SRC_DIR)
 LDFLAGS ?= -pthread -lreadline
 
 all: $(TARGET_EXEC) $(TARGET_TEST)
