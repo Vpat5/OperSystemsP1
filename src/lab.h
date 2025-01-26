@@ -41,8 +41,7 @@ extern "C"
     * @param compare_to Function that will compare two user data elements
     * @return struct list* pointer to the newly allocated list.
     */
-    list_t *list_init(void (*destroy_data)(void *),
-                                 int (*compare_to)(const void *, const void *));
+    list_t *list_init(void (*destroy_data)(void *), int (*compare_to)(const void *, const void *));
 
     /**
      * @brief Destroy the list and and all associated data. This functions will call
