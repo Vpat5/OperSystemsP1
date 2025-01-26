@@ -5,6 +5,7 @@ BUILD_DIR ?= build
 TEST_DIR ?= tests
 SRC_DIR ?= src
 EXE_DIR ?= app
+HARNESS_DIR ?= harness
 
 SRCS := $(shell find $(SRC_DIR) -name *.c)
 OBJS := $(SRCS:%=$(BUILD_DIR)/%.o)
@@ -18,7 +19,7 @@ EXE_SRCS := $(shell find $(EXE_DIR) -name *.c)
 EXE_OBJS := $(EXE_SRCS:%=$(BUILD_DIR)/%.o)
 EXE_DEPS := $(EXE_OBJS:.o=.d)
 
-CFLAGS ?= -Wall -Wextra -fno-omit-frame-pointer -fsanitize=address -g -MMD -MP
+CFLAGS ?= -Wall -Wextra -fno-omit-frame-pointer -fsanitize=address -g -MMD -MP -I$(HARNESS_DIR)
 LDFLAGS ?= -pthread -lreadline
 
 all: $(TARGET_EXEC) $(TARGET_TEST)
@@ -45,6 +46,5 @@ clean:
 install-deps:
 	sudo apt-get update -y
 	sudo apt-get install -y libio-socket-ssl-perl libmime-tools-perl
-
 
 -include $(DEPS) $(TEST_DEPS) $(EXE_DEPS)
