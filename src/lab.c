@@ -1,5 +1,6 @@
 #include "lab.h"
 #include <stdlib.h>
+// Code Review: feedback suggested my code was good and did not require updates
 
 list_t *list_add(list_t *list, void *data) {
     if (list == NULL || data == NULL) {
